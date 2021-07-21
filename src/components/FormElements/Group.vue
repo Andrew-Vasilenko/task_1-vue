@@ -5,7 +5,7 @@
         >{{ serverResponse.title }}</h3>
         <Form
             v-bind:values = "serverResponse.values"
-            v-bind:class = "{hidden: isHidden}"
+            v-if = "isVisible"
         />
     </div>    
 </template>
@@ -16,7 +16,7 @@ import Form from "@/components/Form"
 export default {
     data () {
         return {
-            isHidden: false
+            isVisible: true
         }
     },
     props: ['serverResponse'],
@@ -25,14 +25,8 @@ export default {
     },
     methods: {
         toggleFormVisibility() {
-            this.isHidden = !this.isHidden
+            this.isVisible = !this.isVisible
         }
     }
 }
 </script>
-
-<style scoped>
-    .hidden {
-        display: none;
-    }
-</style>>
