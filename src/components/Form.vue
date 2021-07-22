@@ -1,13 +1,39 @@
 <template>
     <div>
-        <strong>{{ values[0] }}</strong>
-        <strong>{{ values[1] }}</strong>
+        <Group
+            v-on:click = "toggleFormVisibility"
+            v-bind:title = "serverResponse.title"
+        />
+        <div v-if = "isVisible">
+            <BoldString
+                v-for = "arrElement in serverResponse.values"
+                v-bind:value = "arrElement"
+                v-bind:key = "arrElement.values"
+            />
+        </div>        
     </div>
 </template>
 
 <script>
+import Group from "@/components/FormElements/Group"
+import BoldString from "@/components/FormElements/BoldString"
+
 export default{
-    props: ['values']
+    data () {
+        return {
+            isVisible: true
+        }
+    },
+    props: ['serverResponse'],
+    components: {
+        Group:Group,
+        BoldString:BoldString
+    },
+    methods: {
+        toggleFormVisibility() {
+            this.isVisible = !this.isVisible
+        }
+    }
 }
 </script>
 

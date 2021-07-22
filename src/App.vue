@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Group
+    <Form
       v-for = "arrElement in serverResponses"
       v-bind:serverResponse = "arrElement"
       v-bind:key = "arrElement.values"
@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import Group from "@/components/FormElements/Group"
+import Form from "@/components/Form"
 
 export default {
   name: 'App',
@@ -22,7 +22,7 @@ export default {
     }
   },
   components: {
-    Group:Group
+    Form:Form
   }
 }
 </script>
